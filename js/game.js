@@ -70,7 +70,7 @@ function update() {
         snake.pop();
     }
 
-    draw(); a
+    draw();
 }
 
 function endGame() {
@@ -95,9 +95,9 @@ function startGame() {
     gameInterval = setInterval(update, 200);
 }
 
+// Controle com teclas e mobile
 document.addEventListener('keydown', (event) => {
     if (!gameOver) {
-        // Durante o jogo, as setas controlam a cobrinha
         switch (event.key) {
             case 'ArrowUp': if (direction !== 'down') direction = 'up'; break;
             case 'ArrowDown': if (direction !== 'up') direction = 'down'; break;
@@ -105,18 +105,26 @@ document.addEventListener('keydown', (event) => {
             case 'ArrowRight': if (direction !== 'left') direction = 'right'; break;
         }
     } else if (event.key === 'Enter') {
-        // Na tela de Game Over, Enter reinicia o jogo
         resetGame();
     }
 });
 
-function endGame() {
-    gameOver = true;
-    clearInterval(gameInterval);
-    board.innerHTML = ''; // Limpa o tabuleiro
-    gameOverScreen.classList.remove('hidden');
-    finalScoreDisplay.textContent = `Pontuação final: ${score}`;
-}
+// Controle mobile
+document.querySelectorAll('.arrow-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        if (!gameOver) {
+            const newDirection = button.getAttribute('data-direction');
+            if (
+                (newDirection === 'up' && direction !== 'down') ||
+                (newDirection === 'down' && direction !== 'up') ||
+                (newDirection === 'left' && direction !== 'right') ||
+                (newDirection === 'right' && direction !== 'left')
+            ) {
+                direction = newDirection;
+            }
+        }
+    });
+});
 
 restartBtn.addEventListener('click', resetGame);
 

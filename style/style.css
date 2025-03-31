@@ -1,11 +1,13 @@
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #2c3e50;
+    overflow: hidden;
+    /* Evita scroll desnecessário */
 }
 
 #score {
@@ -15,13 +17,25 @@ body {
 }
 
 #game-board {
-    width: 400px;
-    height: 400px;
+    width: 80vw;
+    /* Responsivo: 80% da largura da viewport */
+    height: 80vw;
+    /* Mantém o aspecto quadrado */
+    max-width: 400px;
+    /* Limite máximo */
+    max-height: 400px;
     border: 1px solid black;
     display: grid;
-    grid-template-columns: repeat(20, 20px);
-    grid-template-rows: repeat(20, 20px);
+    grid-template-columns: repeat(20, 1fr);
+    /* Usa fr para flexibilidade */
+    grid-template-rows: repeat(20, 1fr);
     background-color: #ecf0f1;
+}
+
+#credits {
+    font-size: 14px;
+    color: white;
+    margin-top: 10px;
 }
 
 .snake {
@@ -74,8 +88,48 @@ body {
     display: none;
 }
 
-#credits {
-    font-size: 14px;
+/* Controles mobile */
+#mobile-controls {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    max-width: 300px;
+}
+
+.arrow-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background-color: #3498db;
     color: white;
-    margin-bottom: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Media query para telas menores que 700px */
+@media (max-width: 700px) {
+    #mobile-controls {
+        display: flex;
+        /* Mostra os controles */
+    }
+
+    #game-board {
+        width: 90vw;
+        /* Ajusta o tabuleiro para telas menores */
+        height: 90vw;
+        max-width: 400px;
+        max-height: 400px;
+    }
+
+    #score {
+        font-size: 20px;
+        /* Ajusta o tamanho da pontuação */
+    }
 }
