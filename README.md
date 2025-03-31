@@ -9,6 +9,8 @@ Um clássico jogo da cobrinha (Snake) desenvolvido com HTML, CSS e JavaScript. C
 - Sistema de pontuação (10 pontos por comida).
 - Tela de "Game Over" com botão para reiniciar.
 - Design simples e centralizado.
+- **Novo na versão 2**: Layout responsivo para dispositivos mobile.
+- **Novo na versão 2**: Controles na tela (setas) para telas menores que 700px.
 
 ## Tecnologias Usadas
 - **HTML**: Estrutura da página e do tabuleiro.
