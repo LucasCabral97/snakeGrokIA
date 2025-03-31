@@ -95,7 +95,6 @@ function startGame() {
     gameInterval = setInterval(update, 200);
 }
 
-// Controle com teclas e mobile
 document.addEventListener('keydown', (event) => {
     if (!gameOver) {
         switch (event.key) {
@@ -109,7 +108,6 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Controle mobile
 document.querySelectorAll('.arrow-btn').forEach(button => {
     button.addEventListener('click', () => {
         if (!gameOver) {
